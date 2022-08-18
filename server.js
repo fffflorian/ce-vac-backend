@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
 	credentials: true,
 	//origin: true
-	origin: "https://ce-vacation.web.app/"
+	origin: "https://ce-vacation.web.app"
 }));
 // Parse Request of Content-Type — application/json
 app.use(express.json());
