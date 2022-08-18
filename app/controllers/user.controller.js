@@ -6,7 +6,7 @@ const Op = db.Sequelize.Op;
 
 exports.listAll = async (req, res) => {
   const users = await User.findAll({
-    attributes: ['username', 'firstname', 'lastname']
+    attributes: ['username', 'firstname', 'lastname', 'teamId']
   });
   return res.status(200).json(users);
 }
