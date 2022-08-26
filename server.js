@@ -13,6 +13,7 @@ app.use(cors({
 	credentials: true,
 	//origin: true
 	origin: "https://ce-vacation.web.app"
+	//origin: "http://localhost:4200"
 }));
 // Parse Request of Content-Type — application/json
 app.use(express.json());
@@ -40,5 +41,6 @@ app.get('/', (req, res) => {
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
 require("./app/routes/team.routes.js")(app);
+require("./app/routes/tournament.routes.js")(app);
 
 app.listen(PORT, () => console.log('Server is currently running on port ${PORT}'));

@@ -15,8 +15,6 @@ exports.createTeam = async (req, res) => {
             points: 0
         });
         // FIND MEMBERS OF TEAM
-        console.log("====");
-        console.log(req.body.members);
         mess = "";
         users = [];
         for (const member of req.body.members) {
@@ -28,10 +26,8 @@ exports.createTeam = async (req, res) => {
             if (!mem) {
                 mess += `No user with name ${member} was found; `;
             }
-            console.log(mem);
             users.push(mem);
         }
-        console.log("====");
         const result = await team.setUsers(users);
         if (result) res.status(200).send({ message: "Team created successfully. " + mess });
     } catch (error) {
@@ -44,7 +40,7 @@ exports.listAll = async (req, res) => {
         include: [
             { model: User, attributes: ['username', 'firstname', 'lastname'] }
         ],
-        order: [['points', 'DESC']],
+        order: [['points', 'DESC'], ['teamname', 'ASC']],
         attributes: ['teamid', 'teamname', 'points']
     });
     return res.status(200).json(teams);
